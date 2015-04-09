@@ -3,7 +3,7 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 var PhotoGallery = React.createClass({
   getInitialState: function() {
     return ({
-      data: ["http://farm8.static.flickr.com/7674/17084785351_1787a70b32.jpg", "http://farm9.static.flickr.com/8801/17084776221_2667798b45.jpg"]
+      data: this.props.flickrPhotos
    });
   },
   render: function(){
@@ -17,14 +17,14 @@ var PhotoGallery = React.createClass({
 
 var PhotoList = React.createClass({
   render: function() {
-    var content = this.props.data.map(function(element, i) {
+    var image = this.props.data.map(function(element, i) {
       return (
          <SinglePhoto imageURL={element} />
       );
     });
     return (
       <div id="photosList">
-        {content}
+        {image}
       </div>
      );
    }
