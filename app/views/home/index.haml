@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-md-12
+      =react_component("PhotoGallery", {flickrPhotos: @photos.collect{|i|i.url(size = "large" )}} )
+
+
+
+
+
+
+

@@ -10,6 +10,24 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+@import 'bootstrap-sprockets';
+@import "bootstrap";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+@import 'custom-bootstrap';
+
+@import 'components/*';
+
+
+
+//body{width: 99%; height: 99%; overflow: hidden}
+//img.fit{width: 100%; height: 100%;}
+
+
+body { margin: 0;}
+
