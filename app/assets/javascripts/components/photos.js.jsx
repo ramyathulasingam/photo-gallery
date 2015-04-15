@@ -2,15 +2,23 @@ var PhotoGallery = React.createClass({
 
  componentDidMount: function() {
    this.startSlide();
-   setInterval(this.displayState, 100000);
+   setInterval(this.displayState, 900000);
  },
 
   displayState: function(){
-    var datas =  ["http://farm8.static.flickr.com/7652/16529947963_00408106c5_b.jpg","http://farm8.static.flickr.com/7647/16942687277_f1dff0d2f7_b.jpg", "http://farm9.static.flickr.com/8794/16529869283_8ce4356244_b.jpg"]
-    var newData = this.state.data.concat(datas);
-    var reversed = newData.reverse();
-    this.replaceState({data: reversed});
-    this.startSlide();
+    var self = this
+    $.ajax({
+      url: '/large_image',
+      type: 'GET',
+      success:function(data){
+        if (typeof data[0] !== 'undefined') {
+          var newData = self.state.data.concat(data);
+          var reversed = newData.reverse();
+          self.replaceState({data: reversed});
+        }
+        self.startSlide();
+      }.bind(this)
+    });
 
   },
 
@@ -21,7 +29,7 @@ var PhotoGallery = React.createClass({
   },
 
   startSlide: function(){
-    jQuery('.photosList').cycle({fx: 'fade', delay: -3000})
+    jQuery('.photosList').cycle({fx: 'fadeZoom', delay: -3000})
   },
 
   render: function(){
