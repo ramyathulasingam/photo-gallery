@@ -34,6 +34,8 @@ gem 'react-rails'
 
 gem 'flickr_fu'
 
+gem 'underscore-rails'
+
 
 gem 'pry'
 gem 'pry-coolline'

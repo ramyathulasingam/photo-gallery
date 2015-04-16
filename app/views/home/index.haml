@@ -1,7 +1,7 @@
 .container
   .row
-    .col-md-12
-      =react_component("PhotoGallery", {flickrPhotos: @photos.collect{|i|i.url(size = "large" )}} )
+    .col-md-10.col-md-offset-1
+      = react_component("PhotoGallery", {flickrPhotos: @pictures })
 
 
 

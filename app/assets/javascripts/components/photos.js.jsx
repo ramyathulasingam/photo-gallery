@@ -2,7 +2,7 @@ var PhotoGallery = React.createClass({
 
  componentDidMount: function() {
    this.startSlide();
-   setInterval(this.displayState, 900000);
+   setInterval(this.displayState, 50000);
  },
 
   displayState: function(){
@@ -12,11 +12,21 @@ var PhotoGallery = React.createClass({
       type: 'GET',
       success:function(data){
         if (typeof data[0] !== 'undefined') {
-          var newData = self.state.data.concat(data);
-          var reversed = newData.reverse();
-          self.replaceState({data: reversed});
+         var check =  _.difference(_.pluck(data, "id"), _.pluck(this.state.data, "id"))
+          console.log(check);
+          if (typeof check[0] !== 'undefined') {
+            var newData = self.state.data.concat(data);
+
+            var reversed = newData.reverse();
+            var uniqueList = _.uniq(reversed, function (item, key, id) {
+              return item.id;
+            });
+            self.replaceState({data: uniqueList});
+            self.startSlide();
+          }
+
         }
-        self.startSlide();
+
       }.bind(this)
     });
 
@@ -44,7 +54,7 @@ var PhotoList = React.createClass({
   render: function() {
     var image = this.props.data.map(function(element, i) {
       return (
-         <SinglePhoto imageURL={element} key={i}/>
+         <SinglePhoto imageURL={element["url"]} key={i}/>
       );
 
     });
