@@ -18,9 +18,7 @@ var PhotoGallery = React.createClass({
             var newData = self.state.data.concat(data);
 
             var reversed = newData.reverse();
-            var uniqueList = _.uniq(reversed, function (item, key, id) {
-              return item.id;
-            });
+            var uniqueList = _.uniq(reversed, function (item, key, id) {return item.id; });
             self.replaceState({data: uniqueList});
             self.startSlide();
           }
