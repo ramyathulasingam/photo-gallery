@@ -40,7 +40,7 @@ gem 'underscore-rails'
 gem 'pry'
 gem 'pry-coolline'
 gem 'pry-nav'
-
+gem 'sqlite3'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
